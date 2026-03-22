@@ -22,7 +22,7 @@ Your `:nrepl` alias should include both `clj-doc-browse` and `cider-nrepl`:
 ;; deps.edn
 :nrepl {:extra-deps {nrepl/nrepl {:mvn/version "1.6.0"}
                      cider/cider-nrepl {:mvn/version "0.50.3"}
-                     io.github.dcj/clj-doc-browse {:mvn/version "0.1.0"}}
+                     com.dcj/clj-doc-browse {:mvn/version "0.1.0"}}
         :main-opts ["-m" "nrepl.cmdline"
                     "--middleware" "[cider.nrepl/cider-middleware]"]}
 ```
