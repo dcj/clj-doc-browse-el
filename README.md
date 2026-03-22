@@ -42,7 +42,26 @@ Clone this repo and add to your `load-path`:
 
 ### MELPA
 
-Not yet available. Coming soon.
+Available from [MELPA](https://melpa.org/#/clj-doc-browse). Add MELPA to your package archives if you haven't already:
+
+```elisp
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+```
+
+Then:
+
+```
+M-x package-install RET clj-doc-browse RET
+```
+
+### use-package
+
+```elisp
+(use-package clj-doc-browse
+  :ensure t
+  :after cider)
+```
 
 ## Usage
 
