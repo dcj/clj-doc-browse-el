@@ -7,6 +7,7 @@
 ;; Package-Requires: ((emacs "27.1") (cider "1.0") (markdown-mode "2.5"))
 ;; Keywords: clojure, documentation, tools
 ;; URL: https://github.com/dcj/clj-doc-browse-el
+;; SPDX-License-Identifier: MIT
 
 ;; This file is not part of GNU Emacs.
 
