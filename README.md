@@ -88,4 +88,4 @@ Source links resolve via CIDER's `cider-find-file`, so they work for both local 
 
 Copyright (C) 2026 Clark Communications Corporation
 
-MIT License
+[MIT License](LICENSE)
