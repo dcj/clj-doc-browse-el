@@ -36,8 +36,8 @@ Clone this repo and add to your `load-path`:
 ```elisp
 (add-to-list 'load-path "/path/to/clj-doc-browse-el")
 (autoload 'clj-doc-browse "clj-doc-browse" "Browse Clojure library docs" t)
-(autoload 'clj-doc-libraries "clj-doc-browse" "List documented libraries" t)
-(autoload 'clj-doc-search "clj-doc-browse" "Search library docs" t)
+(autoload 'clj-doc-browse-libraries "clj-doc-browse" "List documented libraries" t)
+(autoload 'clj-doc-browse-search "clj-doc-browse" "Search library docs" t)
 ```
 
 ### MELPA
@@ -71,11 +71,11 @@ Connect CIDER to your nREPL (`M-x cider-connect`), then:
 
 Prompts for a namespace name, fetches the Markdown documentation via CIDER, and displays it in a `*clj-docs*` buffer with `markdown-view-mode`.
 
-### `M-x clj-doc-libraries`
+### `M-x clj-doc-browse-libraries`
 
 Lists all documented libraries found on the classpath (displayed in the minibuffer).
 
-### `M-x clj-doc-search`
+### `M-x clj-doc-browse-search`
 
 Full-text search across all embedded documentation. Results are displayed in a `*clj-doc-search*` buffer.
 

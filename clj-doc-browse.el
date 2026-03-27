@@ -38,8 +38,8 @@
 ;;
 ;; Usage:
 ;;   M-x clj-doc-browse     - browse a namespace's docs (rendered Markdown)
-;;   M-x clj-doc-libraries  - list all documented libraries on the classpath
-;;   M-x clj-doc-search     - full-text search across all embedded docs
+;;   M-x clj-doc-browse-libraries  - list all documented libraries on the classpath
+;;   M-x clj-doc-browse-search     - full-text search across all embedded docs
 ;;
 ;; In the *clj-docs* buffer:
 ;;   C-c C-o  - follow source link at point (opens in Emacs, even from JARs)
@@ -142,7 +142,7 @@ read-only `markdown-view-mode' buffer with source link navigation."
    "user"))
 
 ;;;###autoload
-(defun clj-doc-libraries ()
+(defun clj-doc-browse-libraries ()
   "List all documented libraries on the classpath.
 Displays the result in the minibuffer."
   (interactive)
@@ -158,7 +158,7 @@ Displays the result in the minibuffer."
    "user"))
 
 ;;;###autoload
-(defun clj-doc-search (query)
+(defun clj-doc-browse-search (query)
   "Full-text search across all classpath documentation.
 Prompts for QUERY and displays matching lines in a results buffer."
   (interactive "sSearch docs: ")
