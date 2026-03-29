@@ -52,6 +52,13 @@
 (require 'cider)
 (require 'markdown-mode)
 
+;;; Internal utilities
+
+(defun clj-doc-browse--sanitize-query (s)
+  "Escape backslashes and double quotes in S for safe Clojure string interpolation."
+  (replace-regexp-in-string "\"" "\\\\\""
+    (replace-regexp-in-string "\\\\" "\\\\\\\\" s)))
+
 ;;; Source link handling
 
 (defun clj-doc-browse--extract-source-info (url)
@@ -74,7 +81,7 @@ Works for local files and files inside JARs.  Falls back to
                (response (nrepl-sync-request:eval
                           (format "(let [r (clojure.java.io/resource \"%s\")]
                                      (when r (.toString r)))"
-                                  classpath-path)
+                                  (clj-doc-browse--sanitize-query classpath-path))
                           conn))
                (value (nrepl-dict-get response "value")))
           (if (or (null value) (string= value "nil"))
@@ -115,7 +122,8 @@ read-only `markdown-view-mode' buffer with source link navigation."
   (interactive "sNamespace or library: ")
   (cider-ensure-connected)
   (cider-nrepl-request:eval
-   (format "(do (require 'doc.browse) (doc.browse/show \"%s\"))" query)
+   (format "(do (require 'doc.browse) (doc.browse/show \"%s\"))"
+           (clj-doc-browse--sanitize-query query))
    (lambda (response)
      (nrepl-dbind-response response (value err)
        (if err
@@ -124,7 +132,7 @@ read-only `markdown-view-mode' buffer with source link navigation."
            (let ((content (read value))
                  (buf (get-buffer-create "*clj-docs*")))
              (if (null content)
-                 (message "No documentation found for %s" query)
+                 (user-error "No documentation found for %s" query)
                (with-current-buffer buf
                  (let ((inhibit-read-only t))
                    (erase-buffer)
@@ -169,7 +177,7 @@ Prompts for QUERY and displays matching lines in a results buffer."
                   (doseq [{:keys [library namespace line context]}
                           (doc.browse/search \"%s\")]
                     (println (format \"%%s/%%s:%%d  %%s\" library namespace line context)))))"
-           query)
+           (clj-doc-browse--sanitize-query query))
    (lambda (response)
      (nrepl-dbind-response response (value err)
        (if err

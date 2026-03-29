@@ -1,5 +1,7 @@
 # clj-doc-browse.el
 
+[![MELPA](https://melpa.org/packages/clj-doc-browse-badge.svg)](https://melpa.org/#/clj-doc-browse)
+
 Emacs package for browsing Clojure library documentation embedded in JARs, via [CIDER](https://cider.mx).
 
 ## What it does
